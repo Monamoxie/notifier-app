@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class SubscriberService
 {
@@ -36,8 +37,7 @@ class SubscriberService
      */
     public function isSubscriptionExist(int $topicId, string $url): bool
     {
-        return Subscriber::where('topic_id', $topicId)
-            ->where('url', $url)->exists();
+        return Subscriber::where('topic_id', $topicId)->where('url', $url)->exists();
     }
 
 
@@ -52,7 +52,7 @@ class SubscriberService
         $client = new Client();  
         foreach ($subscribers as $subscriber) { 
             try {
-                $request = $client->request('POST', $subscriber->url, [
+                $client->request('POST', $subscriber->url, [
                     'headers' => [ 
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json'
@@ -62,6 +62,7 @@ class SubscriberService
                     ]
                 ]); 
             } catch (\Throwable $th) {
+                Log::error('An error occured while publishing', $th->getMessage());
             }
         };
        return [true];
