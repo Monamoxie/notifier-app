@@ -29,11 +29,11 @@ subscribers where a topic is a string and a subscriber is an HTTP endpoint. When
 
 ## API DOCUMENTATION AND REQUIREMENTS
 | URI 	| METHOD 	| BODY 	 	|
-|----:	|--------	|------	|---	|---	|---	|---	|---	|---	|---	|---	|
-|  /subscribe/{topic:topic}  	|POST        	| url: string -for instance, "http://127.0.0.1:9500/api/technology"   	|   	|   	|   	|   	|   	|   	|   	|   	|
-|    /publish/{topic:topic} 	|  POST      	|      	payload: JSON -for instance, {"title": "Technology Update","message": "It's a new day. Whooooray for technology!!!" } |   	|   	|   	|    
+|----:	|--------	|------	|
+|  /subscribe/{topic:topic}  	|POST        	| url: string -for instance, "http://127.0.0.1:9500/api/technology"   	|
+|    /publish/{topic:topic} 	|  POST      	|      	payload: JSON -for instance, {"title": "Technology Update","message": "It's a new day. Whooooray for technology!!!" } |
 
- 
+
 ## AVAILABLE TOPICS IN THE DB SEEDER
 - technology
 - gender-equality
