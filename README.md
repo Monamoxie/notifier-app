@@ -8,14 +8,16 @@ subscribers where a topic is a string and a subscriber is an HTTP endpoint. When
  
 ## HOW TO TEST
 - Clone the project
-- Copy contents of .env.example into .env using `cp .env.example .env`
+- cd into project `cd notifier-app` 
+- Copy contents of .env.example into .env using `cp .env.example .env` 
+- Install dependencies `composer install`
 - Generate an app key using `php artisan key:generate`
 - Create a database and fill in the details in your newly created .env file where necessary
 - Run the migration command `php artisan migrate`
 - Run the seed command `php artisan db:seed` 
 -  Run `php artisan serve` in the root directory. This should fire up a development server on port 8000. 
--  cd into 00-subscriber-server-1 directory and run `php artisan serve --port=9000` to fire up a second development server for the subscriber 1 app. You can use any port you want, but remember to include the correct port when subscribing
--  Repeat the above process for 00-subscriber-server-2 using a different port.
+-  cd into 00-subscriber-server-1 directory, copy contents of .env.example into .env using `cp .env.example .env`, run `composer install` to install dependencies, run `php artisan key:generate` to generate an app key, then run `php artisan serve --port=9000` to fire up a second development server for the subscriber 1 app. You can use any port you want, but remember to include the correct port when subscribing
+-  cd into 00-subscriber-server-2 and repeat the above process using a different port.
 -  Now you should have 3 development servers running concurrently
 
 
